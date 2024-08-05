@@ -150,9 +150,8 @@ void PIN_MANAGER_Initialize (void)
      ***************************************************************************/
     __builtin_write_OSCCONL(OSCCON & 0xbf); // unlock PPS
 
-    RPINR20bits.SDI1R = 0x0003;    //RD10->SPI1:SDI1
-    RPINR20bits.SCK1R = 0x0004;    //RD9->SPI1:SCK1
     RPOR2bits.RP4R = 0x0008;    //RD9->SPI1:SCK1
+    RPINR20bits.SDI1R = 0x0003;    //RD10->SPI1:SDI1
     RPOR1bits.RP2R = 0x0007;    //RD8->SPI1:SDO1
     RPINR20bits.SCK1R = 0x0004;    //RD9->SPI1:SCK1
 
@@ -216,7 +215,7 @@ void __attribute__ (( interrupt, no_auto_psv )) _IOCInterrupt ( void )
         
         
         // Clear the flag
-       //IFS1bits.IOCIF = 0;
+        IFS1bits.IOCIF = 0;
     }
 }
 
